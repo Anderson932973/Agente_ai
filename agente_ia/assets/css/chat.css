@@ -1,0 +1,230 @@
+.chat-button {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.chat-button .avatar {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+.chat-bubble {
+    position: absolute;
+    bottom: 120px; /* Ajustado para dar espaço para as bolinhas */
+    right: 0;
+    background: #2D4B9A;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+    animation: fadeInOut 5s infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-dots {
+    position: absolute;
+    bottom: -27px; /* Ajustado para posicionar as bolinhas abaixo do balão */
+    right: 27px; /* Ajustado para alinhar as bolinhas com o balão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dot {
+    background: #2D4B9A;
+    border-radius: 50%;
+    margin: 2px 0;
+}
+
+.dot1 {
+    width: 8px;
+    height: 8px;
+}
+
+.dot2 {
+    width: 6px;
+    height: 6px;
+}
+
+.dot3 {
+    width: 4px;
+    height: 4px;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-end; /* Alinha as bolinhas à direita */
+    float: right;
+}
+
+.typing-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2D4B9A;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: blink 1.4s infinite both;
+}
+
+.typing-indicator .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 80%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #2D4B9A;
+    color: #FFFFFF;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.chat-header button {
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.chat-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #F7F7F7;
+    overflow-y: auto;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    max-height: calc(100% - 60px); /* Ajuste para garantir que o input não seja empurrado */
+}
+
+#chat-input {
+    padding: 15px;
+    border: none;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    position: sticky;
+    bottom: 0;
+    background: #FFFFFF;
+    resize: none; /* Impede o redimensionamento do textarea */
+    height: 60px; /* Altura fixa para o textarea */
+}
+
+#chat-input::placeholder {
+    color: #999;
+}
+
+.chat-message {
+    background: #2D4B9A;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    position: relative;
+    white-space: pre-wrap; /* Mantém quebras de linha */
+}
+
+.chat-message.user {
+    background: #28316F;
+    align-self: flex-end;
+    white-space: pre-wrap; /* Mantém quebras de linha */
+    word-wrap: break-word;
+}
+
+.chat-message.user::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #28316F;
+}
+
+.chat-message.ia {
+    align-self: flex-start;
+    margin-left: auto;
+    white-space: pre-wrap; /* Mantém quebras de linha */
+    word-wrap: break-word;
+}
+
+.chat-message.ia::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #2D4B9A;
+}
+
+.chat-message span {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.chat-message.ia span {
+    text-align: right;
+}
+
+.chat-message a {
+    color: yellow !important;
+}
